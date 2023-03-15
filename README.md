@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+Deployed version: https://pizzeria-ordering.netlify.app/
+
+The website is a basic model of a pizza ordering site. User can explore through various available options and add their choices to the cart.The pagination makes it very simple for the users to see all the menu items with ease without scrolling much. Using redux-toolkit the cart page of the project has smoothly been made which allows the user to view thier added items and the total cost which they have to pay when placing order.
+
 ### `npm start`
 
 Runs the app in the development mode.\
