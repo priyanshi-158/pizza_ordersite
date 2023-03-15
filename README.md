@@ -7,7 +7,7 @@ The website is a basic model of a pizza ordering site. User can explore through 
 React JS, Tailwind CSS
 
 ### Libraries Used:
-react-redux, react-router-dom,redux-toolkit
+react-redux, react-router-dom, redux-toolkit, react-spinners
 
 ### Development Environment:
 VS code, git, Netlify, Render
