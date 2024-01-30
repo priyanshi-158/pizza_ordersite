@@ -10,7 +10,7 @@ const About = () => {
     <div className='flex flex-col-reverse md:flex-row'>
         <div className='flex-1 md:w-[50%] py-8 '>
         <h1 className='text-6xl font-bold p-8 hidden md:block'>About Us</h1>
-        <p className='text-xl pl-8 pb-20 md:text-3xl'>Welcome to our pizza ordering website <b>Pizzeria </b> 
+        <p className='text-xl pl-8 pb-20 md:text-3xl'>Welcome to our pizza ordering website <b>Pizzarita </b> 
          the ultimate destination for pizza lovers! 
         We offer a wide range of delicious pizzas,all made with high-quality ingredients and baked to perfection. 
         Our easy-to-use platform makes it simple for you to order your favourite pizzas,

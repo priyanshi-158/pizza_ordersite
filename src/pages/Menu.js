@@ -14,9 +14,9 @@ const Menu = () => {
   useEffect(() => {
     const pizzacard = async () => {
       setLoading(true)
-      const res = await fetch('https://pizza-order-b1cv.onrender.com/pizzas')
+      const res = await fetch('https://pizzarita-backend-deploy.vercel.app/api/v1/getAllProducts')
       const json = await res.json();
-      setData(json);
+      setData(json?.data);
       setLoading(false)
     }
     pizzacard()

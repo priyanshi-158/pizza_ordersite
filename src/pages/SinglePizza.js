@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLoaderData, useParams } from 'react-router-dom'
 import { addProduct } from '../redux/cartSlice'
 
 const SinglePizza = () => {
-    const {id}=useParams()
+    const token=useSelector(state=>state.login.token);
     const single=useLoaderData()
     const [price,setPrice]=useState(single.price)
     const [quantity,setQuantity]=useState(1)
@@ -41,7 +41,10 @@ const SinglePizza = () => {
     }
 
     const handleClick=()=>{
+      if(token)
       dispatch(addProduct({...single,extras,price,quantity}))
+    else
+    alert("Login to continue");
     }
 
   return (
@@ -100,13 +103,8 @@ export default SinglePizza
 
 export const SinglePizzaLoader=async ({params})=>{
  const {id}=params
- const res=await fetch('https://pizza-order-b1cv.onrender.com/pizzas')
+ const res=await fetch(`https://pizzarita-backend-deploy.vercel.app/api/v1/getSingleProduct/${id}`)
  const json=await res.json()
  console.log(json);
- for(let i=0; i<json.length; i++)
- {
-  if(json[i].id===id)
-  return json[i];
- }
- return null;
+    return json?.data;
 }

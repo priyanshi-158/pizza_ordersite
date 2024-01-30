@@ -8,15 +8,15 @@ const PizzaList = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-        fetch('https://pizza-order-b1cv.onrender.com/pizzas')
+        fetch('https://pizzarita-backend-deploy.vercel.app/api/v1/getAllProducts')
             .then(res => res.json())
             .then(res => {
-                setData(res)
+                setData(res?.data)
             })
             .catch(err => console.error(err))
         setLoading(false);
     }, [])
-
+    console.log(data);
 
     return (
         <div className='py-5 px-3 flex flex-col items-center'>
@@ -30,8 +30,8 @@ const PizzaList = () => {
                 data-testid="loader"
             />}
             {!loading && <div className='md:flex items-center flex-wrap justify-center hidden '>
-                {data.filter(pizza => pizza.rate == 5).map((item) => (
-                    <Card data={item} key={item.id} />
+                {data.filter(pizza => pizza.rate === 5).map((item) => (
+                    <Card data={item} key={item._id} />
                 ))}
 
             </div>}

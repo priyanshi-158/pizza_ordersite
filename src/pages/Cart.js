@@ -1,11 +1,13 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import EmptyCart from '../components/EmptyCart'
 import Footer from '../components/Footer'
 
 const Cart = () => {
-  const dispatch = useDispatch()
   const cart = useSelector(state => state.cart)
+  const onCheckout=()=>{
+    alert("Thank You for choosing us. The order cannot be placed now")
+  }
   if (cart.products.length === 0) {
     return (
       <EmptyCart/>
@@ -67,7 +69,7 @@ const Cart = () => {
               <div className='mb-10 text-lg'>
                 <b className='mr-2'>Total: </b>Rs. {Math.round(cart.total + 0.18 * cart.total)}
               </div>
-              <button className='bg-blue-700 h-8 hover:bg-blue-800 font-bold'>CHECKOUT</button>
+              <button className='bg-blue-700 h-8 hover:bg-blue-800 font-bold' onClick={onCheckout}>CHECKOUT</button>
             </div>
           </div>
         </div>

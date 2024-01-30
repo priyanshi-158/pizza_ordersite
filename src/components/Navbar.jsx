@@ -1,15 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import telephone from "../images/telephone.png"
 import cart from "../images/cart.png"
 import logo from "../images/logo.png"
 import close from "../images/close.svg"
 import menu from "../images/menu.svg"
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../redux/loginSlice';
 
 const Navbar = () => {
     const quantity=useSelector(state=>state.cart.quantity);
+    const loggedin=useSelector(state=>state.login.loggedin)
+    const token=localStorage.getItem("token");
+    const dispatch=useDispatch()
+    const user=JSON.parse(localStorage.getItem("user"))
     const [toggle, setToggle] = useState(false)
+    const onClick=()=>{
+       dispatch(logout())
+       window.location.reload()
+    }
+    useEffect(()=>{
+        console.log(loggedin) 
+    },[loggedin])
     return (
         <div className='bg-blue-800 h-[100px] py-0 px-12 flex items-center justify-between sticky top-0 z-[999] w-[100%]' >
             <div className='flex-[3] lg:flex-1 flex items-center'>
@@ -18,15 +30,26 @@ const Navbar = () => {
                 </div>
                 <div className='ml-5 text-white'>
                     <div className='text-sm xl:flex font-medium hidden'>ORDER NOW !! </div>
-                    <div className='xl:text-lg text-sm font-bold'>+91 89234 53985</div>
+                    <div className=' text-sm font-bold'>+91 89234 53985</div>
                 </div>
             </div>
             <div className='hidden lg:flex-[3] lg:flex items-center '>
                 <ul className='p-0 lg:flex hidden items-center list-none text-white'>
-                    <li className='m-5 mx-40 font-medium text-xl hover:text-slate-100 cursor-pointer'><NavLink to='/'>Homepage</NavLink> </li>
-                    <li className='m-5 mr-40 font-medium text-xl hover:text-slate-100 cursor-pointer'><NavLink to ='/about'>About</NavLink></li>
-                    <li className='m-5 mr-40 font-medium text-xl hover:text-slate-100 cursor-pointer'> <NavLink to='/menu'>Menu</NavLink></li>
-                    <li className='m-5 mr-40 font-medium text-xl hover:text-slate-100 cursor-pointer'><NavLink to='/contact'>Contact</NavLink></li>
+                    <li className='m-5 mx-30 font-medium text-xl hover:text-slate-100 cursor-pointer'><NavLink to='/'>Homepage</NavLink> </li>
+                    <li className='m-5 mr-30 font-medium text-xl hover:text-slate-100 cursor-pointer'><NavLink to ='/about'>About</NavLink></li>
+                    <li className='m-5 mr-30 font-medium text-xl hover:text-slate-100 cursor-pointer'> <NavLink to='/menu'>Menu</NavLink></li>
+                    <li className='m-5 mr-96 font-medium text-xl hover:text-slate-100 cursor-pointer'><NavLink to='/contact'>Contact</NavLink></li>
+                    {!token?<><li className='my-5 text-xl hover:text-slate-100 cursor-pointer'>
+                    <button className=' bg-white text-black font-medium p-[10px] my-[4px] border-none cursor-pointer rounded hover:bg-black hover:text-white'><NavLink to='/login'>Login</NavLink>
+                    </button></li>
+                    <li className='m-5 mr-30 text-xl hover:text-slate-100 cursor-pointer'>
+                    <button className=' bg-white text-black font-medium p-[10px] my-[4px] border-none cursor-pointer rounded hover:bg-black hover:text-white min-w-max'><NavLink to='/signup'>Sign Up</NavLink>
+                    </button></li></>:<><li className='m-5 mr-30 text-xl hover:text-slate-100 cursor-pointer'>
+                    <button className=' bg-white text-black font-medium p-[10px] my-[4px] border-none cursor-pointer rounded hover:bg-black hover:text-white' onClick={onClick}>Logout
+                    </button></li>
+                    <img src={user.image} alt="" className='rounded-[50%] h-[28px] w-[28px] lg:h-14 lg:w-14' />
+                </>}
+                    
                 </ul>
             </div>
             <div className='flex-1 flex items-center justify-end'>
@@ -48,7 +71,13 @@ const Navbar = () => {
                         <li className='font-normal cursor-pointer font-serif text-[18px] mb-4 text-white'> <NavLink to='/'>Homepage</NavLink></li>
                         <li className='font-normal cursor-pointer font-serif text-[18px] mb-4 text-white'><NavLink to ='/about'>About</NavLink></li>
                         <li className='font-normal cursor-pointer font-serif text-[18px] mb-4 text-white'> <NavLink to='/menu'>Menu</NavLink></li>
-                        <li className='font-normal cursor-pointer font-serif text-[18px] text-white'><NavLink to='/contact'>Contact</NavLink></li>
+                        <li className='font-normal cursor-pointer font-serif text-[18px] mb-10 text-white'><NavLink to='/contact'>Contact</NavLink></li>
+                        {token?<>
+                            <li className='font-normal cursor-pointer font-serif text-[18px] text-white' onClick={onClick}>Logout</li>
+                        </>:<>
+                        <li className='font-normal cursor-pointer font-serif text-[18px] mb-4 text-white'><NavLink to='/login'>Login</NavLink></li>
+                        <li className='font-normal cursor-pointer font-serif text-[18px] text-white'><NavLink to='/signup'>Sign Up</NavLink></li>
+                        </>}
                     </ul>
                 </div>
             </div>
