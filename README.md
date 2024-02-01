@@ -1,22 +1,21 @@
-# Pizzeria- A pizza-ordering site
+# Pizzarita- A pizza-ordering site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The website is a basic model of a pizza-ordering site. Users can explore various options and add their choices to the cart. The pagination makes it very simple for the users to see all the menu items easily without scrolling much. Using redux-toolkit the cart page of the project has smoothly been made which allows the user to view their added items and the total cost that they have to pay when placing an order. For the styling and designing of the page, Tailwind CSS proved to be of great help. The website is authenticated i.e. users sign up before adding the items to the cart. The Mongo DB database stores the data of products and the information of the users.
 
-The website is a basic model of a pizza ordering site. User can explore through various available options and add their choices to the cart.The pagination makes it very simple for the users to see all the menu items with ease without scrolling much. Using redux-toolkit the cart page of the project has smoothly been made which allows the user to view thier added items and the total cost which they have to pay when placing order.For the styling and designing of the page Tailwind CSS proved to be of a great help.All the data in the site is coming from a json-server which is deployed on render.
 ### Tech Stacks Used:
-React JS, Tailwind CSS
+React JS, Tailwind CSS, Express JS, Mongo DB
 
 ### Libraries Used:
-react-redux, react-router-dom, redux-toolkit, react-spinners
+React-redux, React-router-dom, Redux-toolkit, React-spinners
 
 ### Development Environment:
-VS code, git, Netlify, Render
+VS code, git, Vercel
+
+Deployed version: [[Pizzerita](https://pizza-ordersite.vercel.app/)]
 
 ## Available Scripts
 
 In the project directory, you can run:
-
-Deployed version: https://pizzeria-ordering.netlify.app/
 
 ### `npm start`
 
